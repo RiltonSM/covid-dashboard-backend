@@ -4,13 +4,7 @@ const cors = require('cors');
 
 var whitelist = ['http://covid-dashboard-ce.herokuapp.com', 'https://covid-dashboard-ce.herokuapp.com']
 var corsOptions = {
-  origin: function (origin, callback) {
-    if (whitelist.indexOf(origin) !== -1) {
-      callback(null, true)
-    } else {
-      callback(new Error('Not allowed by CORS'))
-    }
-  }
+  origin: 'http://covid-dashboard-ce.herokuapp.com'
 }
 
 const app = express();
