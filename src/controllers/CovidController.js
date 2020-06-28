@@ -2,18 +2,6 @@ const knex = require('../database/connection');
 require('dotenv/config');
 
 module.exports = {
-    async index (request, response) {
-        const data = await knex('covid').where('country', 'brazil').select('*');
-        response.json(data);
-    },
-
-    async show (request, response) {
-        const { state } = request.params;
-        const data = await knex('covid').where('country', 'brazil').andWhere('state', state).select('*');
-        
-        response.json(data);
-    },
-
     async showDay (request, response){
         const { date, region, state, city } = request.query;
         let data = [];
@@ -107,26 +95,5 @@ module.exports = {
         }
 
         return response.json(data);
-    },  
-    
-
-    async create (request, response) {
-        const { state, country, cases, deaths, suspects, refuses, datetime } = request.body;
-        
-        try{
-            knex('covid').insert({
-                state,
-                country,
-                deathsAcc,
-                deathsNew,
-                casesAcc,
-                casesNew,
-                date
-            });
-
-            return response.json({ error: false })
-        } catch (err) {
-            return response.json({ error: true, detail: err})
-        }
     }
 }

@@ -2,7 +2,7 @@ require('dotenv/config');
 const express = require('express');
 const cors = require('cors');
 
-var whitelist = ['http://covid-dashboard-ce.herokuapp.com/', 'https://covid-dashboard-ce.herokuapp.com/']
+var whitelist = ['http://covid-dashboard-ce.herokuapp.com', 'https://covid-dashboard-ce.herokuapp.com']
 var corsOptions = {
   origin: function (origin, callback) {
     if (whitelist.indexOf(origin) !== -1) {
