@@ -15,7 +15,7 @@ var corsOptions = {
 
 const app = express();
 const routes = require('./routes');
-app.use(cors({ origin: 'http://covid-dashboard-ce.herokuapp.com/'}));
+app.use(cors());
 app.use(express.json());
 app.use(routes);
 
